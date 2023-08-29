@@ -6,6 +6,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\formatage_models\FormatageModelsThemes;
 use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
+
 /**
  * Agence constant service section by TMC
  *
@@ -39,8 +40,7 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  *
  *
  */
-class AgenceConstantService extends FormatageModelsSection
-{
+class AgenceConstantService extends FormatageModelsSection {
 
     /**
      *
@@ -48,24 +48,23 @@ class AgenceConstantService extends FormatageModelsSection
      * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels::__construct()
      */
 
-     public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
-    // TODO Auto-generated method stub
-    parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'spaker_mod') . "/icons/agence_constant_service_map.jpg");
-  }
+    public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
+        // TODO Auto-generated method stub
+        parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
+        $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'spaker_mod') . "/icons/agence_constant_service_map.jpg");
+    }
 
     /**
      * {@inheritdoc}
      */
 
-    public function buildConfigurationForm(array $form, FormStateInterface $form_state)
-    {
+    public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
         $config = $this->getConfiguration();
         $form = parent::buildConfigurationForm($form, $form_state);
         $form['show_image_class'] = [
-          '#type' => 'textfield',
-          '#title' => 'ajouter ou retirer d-none pour ne pas afficher l\'image',
-          '#default_value' => isset($config['show_image_class']) ? $config['show_image_class'] : '',
+            '#type' => 'textfield',
+            '#title' => 'ajouter ou retirer d-none pour ne pas afficher l\'image',
+            '#default_value' => isset($config['show_image_class']) ? $config['show_image_class'] : '',
         ];
         return $form;
     }
@@ -86,19 +85,16 @@ class AgenceConstantService extends FormatageModelsSection
      * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels:build()
      */
 
-    public function build(array $regions)
-    {
+    public function build(array $regions) {
 
         // TODO Auto-generated method stub
         $build = parent::build($regions);
         FormatageModelsThemes::formatSettingValues($build);
 
         return $build;
-
     }
 
-    public function defaultConfiguration()
-    {
+    public function defaultConfiguration() {
         return [
             'show_image_class' => 'd-none',
             'region_tag_sub_title' => 'h4',

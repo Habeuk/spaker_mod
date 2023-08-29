@@ -34,7 +34,7 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  *
  */
 class VesperrHeaderSection extends FormatageModelsSection {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -43,7 +43,7 @@ class VesperrHeaderSection extends FormatageModelsSection {
   public function __construct(array $configuration, $plugin_id, $plugin_definition, StylesGroupManager $styles_group_manager) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition, $styles_group_manager);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'spaker_mod') . "/icons/Vessper_header_map.jpg");
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'spaker_mod') . "/icons/Vessper_header_map.jpg");
   }
   /**
    *
@@ -66,60 +66,59 @@ class VesperrHeaderSection extends FormatageModelsSection {
    * {@inheritdoc}
    */
   private function getMenus(array $menu_nav) {
-      foreach ($menu_nav as $k => $m) {
-          if (isset($m['#base_plugin_id']) && $m['#base_plugin_id'] === 'system_menu_block') {
-              // set new theme.
-              $menu_nav[$k]['content']['#theme'] = 'layoutmenu_vesperr_header_menu';
-            
-              // add class
-              $menu_nav[$k]['content']['#attributes'] = [
-                  'class' => [
-                      'nav-list'
-                  ]
-              ];
-              // format-it if is not empty
-              if (!empty($menu_nav[$k]['content']['#items'])) 
-              {
-                  $this->formatListMenus($menu_nav[$k]['content']['#items']);
-                  //dump($menu_nav[$k]['content']['#items']);
-              }
-          }
+    foreach ($menu_nav as $k => $m) {
+      if (isset($m['#base_plugin_id']) && $m['#base_plugin_id'] === 'system_menu_block') {
+        // set new theme.
+        $menu_nav[$k]['content']['#theme'] = 'layoutmenu_vesperr_header_menu';
+
+        // add class
+        $menu_nav[$k]['content']['#attributes'] = [
+          'class' => [
+            'nav-list'
+          ]
+        ];
+        // format-it if is not empty
+        if (!empty($menu_nav[$k]['content']['#items'])) {
+          $this->formatListMenus($menu_nav[$k]['content']['#items']);
+          //dump($menu_nav[$k]['content']['#items']);
+        }
       }
-      return $menu_nav;
+    }
+    return $menu_nav;
   }
   /**
    * {@inheritdoc}
    */
   private function formatListMenus(array &$items) {
-      foreach ($items as $k => $item) {
-          if (!empty($item['attributes'])) {
-              /**
-               *
-               * @var \Drupal\Core\Template\Attribute $attribute
-               */
-              $attribute = $item['attributes'];
-              $attribute->addClass('nav-item');
-              // add sub menu
-              if ($item['is_expanded']) {
-                  $attribute->addClass('sub-alt');
-              }
-              // menu actif
-              if ($item['in_active_trail']) {
-                  $attribute->addClass('nav-item--active');
-              }
-              $items[$k]['attributes'] = $attribute;
-              //
-              if (!empty($item['below'])) {
-                  $this->formatListMenus($item['below']);
-                  $items[$k]['below'] = $item['below'];
-              }
-          }
+    foreach ($items as $k => $item) {
+      if (!empty($item['attributes'])) {
+        /**
+         *
+         * @var \Drupal\Core\Template\Attribute $attribute
+         */
+        $attribute = $item['attributes'];
+        $attribute->addClass('nav-item');
+        // add sub menu
+        if ($item['is_expanded']) {
+          $attribute->addClass('sub-alt');
+        }
+        // menu actif
+        if ($item['in_active_trail']) {
+          $attribute->addClass('nav-item--active');
+        }
+        $items[$k]['attributes'] = $attribute;
+        //
+        if (!empty($item['below'])) {
+          $this->formatListMenus($item['below']);
+          $items[$k]['below'] = $item['below'];
+        }
       }
+    }
   }
 
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      
+
       'tmc' => [
         'builder-form' => true,
         'info' => [
@@ -149,5 +148,4 @@ class VesperrHeaderSection extends FormatageModelsSection {
       ]
     ];
   }
-  
 }

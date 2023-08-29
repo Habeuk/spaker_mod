@@ -28,7 +28,7 @@ use Drupal\bootstrap_styles\StylesGroup\StylesGroupManager;
  *
  */
 class VesperrBackToTop extends FormatageModels {
-  
+
   /**
    *
    * {@inheritdoc}
@@ -37,26 +37,26 @@ class VesperrBackToTop extends FormatageModels {
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
     // TODO Auto-generated method stub
     parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->pluginDefinition->set('icon', drupal_get_path('module', 'spaker_mod') . "/icons/Vessper_back_to_top.png");
+    $this->pluginDefinition->set('icon', $this->pathResolver->getPath('module', 'spaker_mod') . "/icons/Vessper_back_to_top.png");
   }
-  
+
   /**
    *
    * {@inheritdoc}
    * @see \Drupal\formatage_models\Plugin\Layout\FormatageModels:build()
    */
   public function build(array $regions) {
-    
+
     // TODO Auto-generated method stub
     $build = parent::build($regions);
     FormatageModelsThemes::formatSettingValues($build);
-    
+
     return $build;
   }
-  
+
   public function defaultConfiguration() {
     return parent::defaultConfiguration() + [
-      
+
       'tmc' => [
         'builder-form' => true,
         'info' => [
@@ -78,5 +78,4 @@ class VesperrBackToTop extends FormatageModels {
       ]
     ];
   }
-  
 }
