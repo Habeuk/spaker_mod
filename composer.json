@@ -2,7 +2,7 @@
 
 	"name": "habeuk/spaker_mod",
 	"description": "My awesome drupal module to work with dru",
-	"type": "drupal-module-custom",
+	"type": "drupal-custom-module",
 	"license": "MIT",
     "authors": [
         {
