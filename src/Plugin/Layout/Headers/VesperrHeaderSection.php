@@ -30,7 +30,7 @@ use Drupal\formatage_models\Plugin\Layout\Sections\FormatageModelsSection;
  *     },
  *  }
  * )
- *
+ *@deprecated
  *
  */
 class VesperrHeaderSection extends FormatageModelsSection {
