@@ -23,9 +23,9 @@
 					<div class="col-sm-6 col-lg-3">
 						<div class="fac-menu">
 							{% if content.first_two %}
-							<h4 {{ region_attributes.first_two.addClass(['fac-title']) }}>
+							<div {{ region_attributes.first_two.addClass(['fac-title','first_two']) }}>
 								{{ content.first_two }}
-							</h4>
+							</div>
 							{% endif %}
 							
 							{% if content.content_two %}
@@ -38,9 +38,9 @@
 					<div class="col-sm-6 col-lg-3">
 						<div class="fac-menu">
 							{% if content.first_three %}
-							<h4 {{ region_attributes.first_three.addClass(['fac-title']) }}>
+							<div {{ region_attributes.first_three.addClass(['fac-title','first_three']) }}>
 								{{ content.first_three }}
-							</h4>
+							</div>
 							{% endif %}
 							{% if content.content_three  %}
 							<div {{ region_attributes.content_three }}> {{ content.content_three }} </div>
@@ -51,9 +51,9 @@
 					<div class="col-sm-6 col-lg-3">
 						<div class="fac-menu">
 							{% if content.first_four %}
-							<h4 {{ region_attributes.first_four.addClass(['fac-title']) }}>
+							<div {{ region_attributes.first_four.addClass(['fac-title','first_four']) }}>
 								{{ content.first_four }}
-							</h4>
+							</div>
 							{% endif %}
 							{% if content.content_four %}
 							<div {{ region_attributes.content_four }}>

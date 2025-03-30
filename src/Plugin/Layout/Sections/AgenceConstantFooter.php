@@ -90,6 +90,9 @@ class AgenceConstantFooter extends FormatageModelsSection {
     return [
       'copyright' => 'col-md-4',
       'list_menu' => 'col-md-8',
+      'region_css_first_two'=> 'h4',
+      'region_css_first_three'=> 'h4',
+      'region_css_first_four'=> 'h4',
       'tmc' => [
         'builder-form' => true,
         'info' => [
